@@ -1,11 +1,13 @@
+# tax_glom_fast
+#
+# The function takes in a phyloseq-object
+# and returns a matrix with with pooled abundances at 
+# a desired taxonomic level (default = Phylum).
+#
+# (c) lasse Ruokolainen 2016
+#####################################################
+
 tax_glom_fast = function(physeq,tax_level='Phylum'){
-	# The function takes in a phyloseq-object
-	# and returns a matrix with with pooled abundances at 
-	# a desired taxonomic level (default = Phylum).
-	#
-	# (c) lasse Ruokolainen 2016
-	#####################################################
-	
 	tax = as.factor(tax_table(physeq)[,tax_level])
 	
 	levels(tax) = ifelse(levels(tax)=='','Unknown',levels(tax))
