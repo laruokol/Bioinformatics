@@ -1,4 +1,3 @@
-OTU_barplot = function(physeq,group,OTU.num){
 # OTU_barplot
 # 
 # This function plots the relative abundance of a taxon (e.g. OTU)
@@ -11,7 +10,8 @@ OTU_barplot = function(physeq,group,OTU.num){
 #
 # (c) Lasse Ruokolainen -- November 2016
 #####################################################################
-	
+
+OTU_barplot = function(physeq,group,OTU.num){
 	require(RColorBrewer)
 	Y = transform_sample_counts(physeq,function(x) x/sum(x))
 	tmp = cbind(data.frame(sample_data(Y)),
