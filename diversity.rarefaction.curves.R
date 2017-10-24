@@ -5,7 +5,9 @@
 # richness (q = 0), Shannon entropy (q = 1), and inverse
 # Simpson index (q = 2). The calculation is based on Hill's
 # numbners (q), which can be used to give an arbitrary weight
-# to species relative abundaces in the calculation.
+# to species relative abundaces in the calculation. The
+# function uses the true.diversity.R function, which needs
+# to be loaded to the work space.
 #
 # INPUT:    phyloseq    a phyloseq-object with an OTU-table
 #           qvals       Hill-parameters used
