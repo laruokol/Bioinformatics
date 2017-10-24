@@ -7,3 +7,4 @@ This repository contains the following scripts:
 3. tax_glom_fast.R  -- USE: pool abundances at a desired taxonomic level. Much faster than tax_glom() in package phyloseq.
 4. tax.bar.plot.R   -- USE: make a bar plot of sample-specific relative abundance, at a given taxonomic level.
 5. OTU_barplot.R    -- USE: plots the relative abundance of a taxon as a barplot.
+6. diversity.rarefaction.curves -- USE: perform community rarefaction and calculate desired estimates of Hill's diversite.
