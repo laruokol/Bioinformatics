@@ -68,7 +68,7 @@ tax.bar.plot = function(physeq, tax_level="Phylum", ncols=10, ord = NULL, palett
 	if(is.null(leg.pos.x)) leg.pos.x = max(x)*1.05
 
 			
-	par(mar=c(10,4,1,lmar),mgp=c(2,.8,0),xpd=NA,lwd=.5)
+	op=par(mar=c(4,4,1,lmar),mgp=c(2,.8,0),xpd=NA,lwd=.5)
 	x = barplot(y,col=cols,axes=F,las=2,cex.names=.5,
 	            ylab='Proportional abundance',cex.lab=1.25,
 	            space=gap,names.arg=names,border=NA)
@@ -82,5 +82,6 @@ tax.bar.plot = function(physeq, tax_level="Phylum", ncols=10, ord = NULL, palett
 			w = tmp==ii
 			text(mean(x[w]),-.05,ii,font=3)
 		}
-	}	
+	}
+	on.exit(par(op))
 }
