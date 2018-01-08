@@ -16,6 +16,7 @@
 #		when q = 2, inverse Simpson diversity is recovered.
 #
 # (c) Lasse Ruokolainen 2015
+#        last modified: 1.8.2018
 ########################################################### 	
 
 
@@ -38,7 +39,7 @@ true.diversity = function(X,q = 1){
 	}else{
 		if(q==1){
 			# Special case of Shannon-diversity: 
-			D = exp(-rowSums(p*log(p),na.rm=T))
+			D = -rowSums(p*log(p),na.rm=T)
 		}else{
 			D = rowSums(p^q) ^ (1/(1-q))
 		}
