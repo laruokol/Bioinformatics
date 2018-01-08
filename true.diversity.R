@@ -41,7 +41,7 @@ true.diversity = function(X,q = 1){
 			# Special case of Shannon-diversity: 
 			D = -rowSums(p*log(p),na.rm=T)
 		}else{
-			D = rowSums(p^q) ^ (1/(1-q))
+			D = rowSums(p^q,na.rm=T) ^ (1/(1-q))
 		}
 	}	
 	return(D)
