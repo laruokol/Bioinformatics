@@ -10,6 +10,7 @@
 # Legendre & De Caceres 2013, Ecology Letters
 #                                            
 # (c) Lasse Ruokolainen 2017
+#        last modified: January 2018
 ####################################################
 
 
@@ -18,7 +19,7 @@ BDpartition = function(data,n=NULL,transform='hellinger'){
 	library(vegan)
 	
 	if(class(data)=='phyloseq'){
-		X = t(otu_table(physeq))
+		X = t(otu_table(data))
 	}else{
 		if(class(data)=='matrix' | class(data)=='data.frame'){
 			X = data
