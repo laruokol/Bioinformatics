@@ -29,8 +29,8 @@ true.diversity = function(X,q = 1){
 		X = as.matrix(X)
 	}
 		
-	# Convert to proportional abundance, if necessary:
-	p = apply(X,2,function(x){if(sum(x)!=1) x/sum(x) else x})	
+        # Convert to proportional abundance:
+	p = t(apply(X,1,function(x) x/sum(x)))	
 	
 	# Calculate diversity:
 	if(q==0){
