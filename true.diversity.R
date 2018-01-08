@@ -35,7 +35,7 @@ true.diversity = function(X,q = 1){
 	# Calculate diversity:
 	if(q==0){
 		# Special case of richness:
-		D = rowSums(p>0) 
+		D = rowSums(p>0, na.rm = TRUE) 
 	}else{
 		if(q==1){
 			# Special case of Shannon-diversity: 
