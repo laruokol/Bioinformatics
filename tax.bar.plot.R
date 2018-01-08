@@ -14,6 +14,7 @@
 #           names     = optional specification of sample names
 #
 # (c) Lasse Ruokolainen, April 2016
+#         last modified: January 2018
 ##########################################################################
 
   
