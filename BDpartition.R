@@ -15,8 +15,8 @@
 
 
 BDpartition = function(data,n=NULL,transform='hellinger'){ 
-	library(phyloseq)
-	library(vegan)
+	require(phyloseq,quietly = T,warn.conflicts = F)
+	require(vegan,quietly = T,warn.conflicts = F)
 	
 	if(class(data)=='phyloseq'){
 		X = t(otu_table(data))
