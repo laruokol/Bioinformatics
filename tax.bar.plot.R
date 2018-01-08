@@ -19,23 +19,17 @@
 
   
 tax.bar.plot = function(physeq, tax_level="Phylum", ncols=10, ord = NULL, palette='Paired',names=NULL,leg.pos.x=NULL,lmar=10) {
-	require(phyloseq)
-	require(RColorBrewer)
+	require(phyloseq,quietly = T)
+	require(RColorBrewer,quietly = T)
 	tmp = physeq
 	
 	tax = as.factor(tax_table(physeq)[,tax_level])
 	levels(tax) = ifelse(levels(tax)=='','Unknown',levels(tax))
 
-	mat = matrix(0,nlevels(tax),nsamples(physeq))
-	rownames(mat) = levels(tax)
-	for(ii in levels(tax)){
-		w = tax%in%ii
-		if(sum(w)==1){
-			mat[ii,] = otu_table(physeq)[w,]
-		}else{
-			mat[ii,] = colSums(otu_table(physeq)[w,])
-		}		
-	}
+	g = list(tax)
+	mat = aggregate(otu_table(physeq),by=g,'sum')
+	rownames(mat) = mat[,1]; mat = mat[,-1]
+	
 	y = apply(mat,2,function(x) x/sum(x))
 	
 	o = order(rowMeans(y),decreasing=T)
@@ -66,14 +60,14 @@ tax.bar.plot = function(physeq, tax_level="Phylum", ncols=10, ord = NULL, palett
 	if(!is.null(names)){
 		if(names==F) names = rep('',ncol(y))	
 	}		
-	if(is.null(leg.pos.x)) leg.pos.x = max(x)*1.05
 
-			
 	op=par(mar=c(4,4,1,lmar),mgp=c(2,.8,0),xpd=NA,lwd=.5)
 	x = barplot(y,col=cols,axes=F,las=2,cex.names=.5,
 	            ylab='Proportional abundance',cex.lab=1.25,
 	            space=gap,names.arg=names,border=NA)
 	axis(2)
+	
+	if(is.null(leg.pos.x)) leg.pos.x = max(x)*1.05
 	legend(leg.pos.x,1,c(as.character(levels(tax)[o][1:ncols]),'Other'),
 		   pch=15,col=cols,pt.cex=1.5, bty="n",title=tax_level,title.adj=0.05)		   
 
